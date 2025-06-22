@@ -8,9 +8,9 @@ public class MaquinaTuring {
     private static final int CENTER = 1000;
     private static final char BLANK = 'B';
 
-    private char[] tape;
+    private char[] cinta;
     private int head;
-    private String state;
+    private String estado;
     private int minUsed;
     private int maxUsed;
     private final int inputLength;
@@ -19,24 +19,24 @@ public class MaquinaTuring {
 
     public MaquinaTuring(String input) {
         // Inicializar cinta con espacios en blanco
-        tape = new char[TAPE_SIZE];
-        Arrays.fill(tape, BLANK);
+        cinta = new char[TAPE_SIZE];
+        Arrays.fill(cinta, BLANK);
 
         // Cargar la cadena de entrada en el centro de la cinta
         for (int i = 0; i < input.length(); i++) {
-            tape[CENTER + i] = input.charAt(i);
+            cinta[CENTER + i] = input.charAt(i);
         }
 
         head = CENTER;  // Cabeza al inicio de la cadena
-        state = "q0";   // Estado inicial
+        estado = "q0";   // Estado inicial
         minUsed = CENTER;
         maxUsed = CENTER + input.length() - 1;
         inputLength = input.length();
         pasosSimulacion = new ArrayList<>();
-        buildTransitions();
+        construirTransiciones();
     }
 
-    private void buildTransitions() {
+    private void construirTransiciones() {
         transitions = new HashMap<>();
 
         // Transiciones para q0 (estado inicial)
@@ -70,9 +70,9 @@ public class MaquinaTuring {
         StringBuilder sb = new StringBuilder();
         for (int i = minUsed; i <= maxUsed; i++) {
             if (i == head) {
-                sb.append("[").append(state).append("]");
+                sb.append("[").append(estado).append("]");
             }
-            sb.append(tape[i]);
+            sb.append(cinta[i]);
         }
         return sb.toString();
     }
@@ -88,8 +88,8 @@ public class MaquinaTuring {
                 System.out.println(desc);
             }
 
-            while (!state.equals("q4")) {
-                Map<Character, Transicion> stateTransitions = transitions.get(state);
+            while (!estado.equals("q4")) {
+                Map<Character, Transicion> stateTransitions = transitions.get(estado);
 
                 // Si no hay transiciones para este estado, rechazar
                 if (stateTransitions == null) {
@@ -97,7 +97,7 @@ public class MaquinaTuring {
                     break;
                 }
 
-                char currentSymbol = tape[head];
+                char currentSymbol = cinta[head];
                 Transicion t = stateTransitions.get(currentSymbol);
 
                 // Si no hay transición para este símbolo, rechazar
@@ -107,8 +107,8 @@ public class MaquinaTuring {
                 }
 
                 // Aplicar la transición
-                tape[head] = t.writeSymbol;   // Escribir nuevo símbolo
-                state = t.nextState;           // Cambiar estado
+                cinta[head] = t.writeSymbol;   // Escribir nuevo símbolo
+                estado = t.nextState;           // Cambiar estado
 
                 // Mover cabeza
                 if (t.direction == 'R') {
@@ -130,7 +130,7 @@ public class MaquinaTuring {
             }
 
             // Si llegamos a q4, aceptar
-            if (state.equals("q4")) {
+            if (estado.equals("q4")) {
                 pasosSimulacion.add("Aceptada");
             }
 

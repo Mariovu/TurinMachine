@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31637309-502b-4959-853d-f843b2a147a4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/turinmachine/TuringAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/turinmachine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/turinmachine/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/turinmachine/MaquinaTuring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/turinmachine/MaquinaTuring.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
